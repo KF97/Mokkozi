@@ -1,0 +1,89 @@
+buildscript {
+	ext {
+		queryDslVersion = "4.4.0"
+		querydslPluginVersion = '1.0.10'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://plugins.gradle.org/m2/" }
+	}
+	dependencies {
+		classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:${querydslPluginVersion}")
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+apply plugin: "io.spring.dependency-management"
+
+group = 'com.b303'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation "io.springfox:springfox-swagger-ui:3.0.0"
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Spring Validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
+	// WebRTC 클라이언트 의존성 추가
+	implementation('org.webjars.bower:webrtc-adapter:7.4.0')
+	// Kurento (미디어서버) 관련 의존성 추가
+	implementation('org.kurento:kurento-client:6.16.0')
+	implementation('org.kurento:kurento-utils-js:6.15.0')
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	// JWT 관련 라이브러리를 추가한다.
+	compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	// Swagger
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
+	// AWS S3
+	compile 'org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE'
+
+
+// Querydsl
+	implementation group: 'com.querydsl', name: 'querydsl-apt', version: queryDslVersion
+	implementation group: 'com.querydsl', name: 'querydsl-core', version: queryDslVersion
+
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+	annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+	annotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+
+//	implementation group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
+}
+
+
+/**
+ * 인텔리제이 Annotation processor 에 생성되는 'src/main/generated' 디렉터리 삭제
+ */
+task cleanGeneatedDir(type: Delete) { // 인텔리제이 annotation processor 가 생성한 Q클래스가 clean 태스크로 삭제되는 게 불편하다면 둘 중에 하나를 선택
+	delete file('src/main/generated')
+}
+

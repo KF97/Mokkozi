@@ -1,0 +1,162 @@
+.profile {
+  /* 1)상단 배경 이미지, 2)사용자 프로필 이미지, 3)사용자 인적사항을 포함한 프레임 */
+  background-color: white;
+  position: relative;
+}
+.bg-img {
+  /* 상단 배경 이미지 */
+  display: inline-block;
+  width: 700px;
+  height: 272px;
+  object-fit: cover;
+}
+.user-info {
+  position: absolute;
+  bottom: auto;
+  width: 300px;
+  top: 245px;
+  left: auto;
+  right: 240px;
+}
+.user-follow {
+  position: absolute;
+  bottom: auto;
+  top: 210px;
+  left: auto;
+  right: 35px;
+}
+.user-img-frame {
+  /* 사용자 프로필 이미지 프레임 */
+  background-color: #f9f7f7;
+  border-radius: 200px;
+  height: 145px;
+  width: 150px;
+  position: absolute;
+  bottom: auto;
+  top: 150px;
+  right: auto;
+  left: 35px;
+}
+
+.sub-frame {
+  /* userImgFrame 내 sub프레임  ( 이미지의 absolute 배치 위해 ) */
+  position: relative;
+}
+.user-img-mod-frame {
+  /* 사용자 프로필 이미지 수정 버튼 프레임 */
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  color: white;
+  position: absolute;
+  bottom: auto;
+  top: 255px;
+  right: auto;
+  left: 150px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0.8rem;
+  border: 1px solid black;
+}
+.user-img-mod-frame * {
+  vertical-align: middle;
+  cursor: pointer;
+}
+#ex_file {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.mod-sub-frame {
+  /* 사용자 프로필 수정 버튼 내 sub 프레임( 배치 때문에 ) */
+  position: relative;
+}
+.user-img {
+  /* 사용자 프로필 이미지 */
+
+  width: 150px;
+  height: 145px;
+}
+.user-info {
+  /* 사용자 인적사항 */
+  padding-left: 25px;
+}
+.header-font {
+  /* 각 부분 별 타이틀 폰트 */
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  padding-left: 5px;
+}
+.edit-div {
+  text-align: end;
+}
+.textarea {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.p-field * {
+  /* 라벨 & 정보 입력창 (input 요소의 부모 요소) */
+  display: block;
+}
+.input-text {
+  /* 정보 입력 창 */
+  display: block;
+  width: 100%;
+}
+.select {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+.calendar {
+  /* 시작일, 종료일 설정하는 캘린더 */
+  width: 50%;
+}
+
+.radius {
+  border-radius: 10px;
+}
+
+.background-div {
+  padding: 0.5rem 5rem;
+  text-align: center;
+}
+
+.board-div {
+  width: 24rem;
+  display: inline-block;
+}
+
+.font {
+  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.font-test {
+  font-family: "this_is_font_name";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.follow-title {
+  border-bottom: 1px solid gainsboro;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.main {
+}
